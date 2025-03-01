@@ -7,12 +7,23 @@ import (
 	"net/http"
 	"os"
 	"os/signal"
+	"sync"
 	"syscall"
+	"time"
+)
+
+var (
+	serverAddr     = ":8000"
+	logRequests    = true
+	serverInstance *http.Server
+	serverMutex    sync.Mutex
 )
 
 func homeHandler(w http.ResponseWriter, r *http.Request) {
+	if logRequests {
+		log.Printf("Request received: %s %s", r.Method, r.URL.Path)
+	}
 
-	log.Printf("Request received: %s %s", r.Method, r.URL.Path)
 	tmpl, err := template.ParseFiles("templates/index.html")
 	if err != nil {
 		http.Error(w, "Could not parse template", http.StatusInternalServerError)
@@ -32,6 +43,38 @@ func printHelp() {
 	fmt.Println("Available commands:")
 	fmt.Println("  q - Quit the server")
 	fmt.Println("  s - Show server status")
+	fmt.Println("  r - Restart the server")
+	fmt.Println("  l - Toggle request logging (currently:", logRequests, ")")
+}
+
+func startServer() {
+	serverMutex.Lock()
+	defer serverMutex.Unlock()
+
+	serverInstance = &http.Server{
+		Addr:    serverAddr,
+		Handler: nil,
+	}
+
+	log.Printf("Starting server on http://localhost%s\n", serverAddr)
+	go func() {
+		if err := serverInstance.ListenAndServe(); err != nil && err != http.ErrServerClosed {
+			log.Fatalf("Could not start server: %v", err)
+		}
+	}()
+}
+
+func stopServer() {
+	serverMutex.Lock()
+	defer serverMutex.Unlock()
+
+	if serverInstance != nil {
+		log.Println("Shutting down server...")
+		if err := serverInstance.Close(); err != nil {
+			log.Printf("Error shutting down server: %v", err)
+		}
+		serverInstance = nil
+	}
 }
 
 func main() {
@@ -39,16 +82,8 @@ func main() {
 	signal.Notify(stop, os.Interrupt, syscall.SIGTERM)
 
 	http.HandleFunc("/", homeHandler)
-	serverAddr := ":8000"
-
-	log.Printf("Starting server on http://localhost%s\n", serverAddr)
+	startServer()
 	log.Println("Press 'h' to see available commands.")
-
-	go func() {
-		if err := http.ListenAndServe(serverAddr, nil); err != nil {
-			log.Fatalf("Could not start server: %v", err)
-		}
-	}()
 
 	go func() {
 		var input string
@@ -67,7 +102,15 @@ func main() {
 				stop <- syscall.SIGTERM
 				return
 			case "s":
-				log.Println("Server is running on http://localhost:8000")
+				log.Println("Server is running on http://localhost" + serverAddr)
+			case "r":
+				log.Println("Restarting server...")
+				stopServer()
+				time.Sleep(1 * time.Second)
+				startServer()
+			case "l":
+				logRequests = !logRequests
+				log.Println("Request logging is now:", logRequests)
 			default:
 				fmt.Println("Unknown command. Press 'h' for help.")
 			}
@@ -75,5 +118,6 @@ func main() {
 	}()
 
 	<-stop
+	stopServer()
 	log.Println("Server stopped.")
 }
