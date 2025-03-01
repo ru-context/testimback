@@ -82,6 +82,9 @@ func main() {
 	signal.Notify(stop, os.Interrupt, syscall.SIGTERM)
 
 	http.HandleFunc("/", homeHandler)
+	fs := http.FileServer(http.Dir("static"))
+	http.Handle("/static/", http.StripPrefix("/static/", fs))
+
 	startServer()
 	log.Println("Press 'h' to see available commands.")
 
@@ -98,7 +101,6 @@ func main() {
 			case "h":
 				printHelp()
 			case "q":
-				log.Println("Shutting down server...")
 				stop <- syscall.SIGTERM
 				return
 			case "s":

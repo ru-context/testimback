@@ -1,29 +1,64 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Волшебные формулы</title>
+    <title>Digital Fashion Summit</title>
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <h1>Волшебные формулы</h1>
+    <header>
+        <div class="header-container">
+            <div class="logo">New Codes<span class="logo-dot">.</span></div>
 
-    <p>
-        (x + y)<sup>3</sup> = x<sup>3</sup> + 3x<sup>2</sup>y + 3xy<sup>2</sup> + y<sup>3</sup>
-    </p>
+            <button class="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
 
-    <p>
-        &#916;x<sub>1</sub> + &#916;x<sub>2</sub> + &#8230; + &#916;x<sub>n</sub> = &#8721;&#916;x<sub>k</sub>
-    </p>
+            <nav>
+                <ul class="nav-menu">
+                    <li class="active"><a href="#">DISCOVER</a></li>
+                    <li><a href="#">LINEUP</a></li>
+                    <li><a href="#">AGENDA</a></li>
+                    <li><a href="#">NEWS</a></li>
+                    <li><a href="#">LOCATION</a></li>
+                    <li><a href="#">PARTNERS</a></li>
+                    <li class="mobile-only"><a href="#">GET INVOLVED</a></li>
+                </ul>
+            </nav>
 
-    <p>
-        Если &#8704; x &#8712; &#8477; такого, что |x| &#8804; 1 &#8707; y &#8805; 1, то &#958; < &#8734;
-    </p>
+            <button class="get-involved-btn">GET INVOLVED</button>
+        </div>
+    </header>
 
-    <hr width='600px' align='left'>
+    <main>
+        <section class="hero">
+            <h1>Digital Fashion Summit</h1>
+            <div class="image-placeholder">
+                <!-- Здесь можно добавить изображение голографической фигуры -->
+                <img src="placeholder-image.jpg" alt="Holographic Figure" class="holo-figure">
+            </div>
+            <div class="event-details">
+                <p>NOVEMBER 15-16, 2023</p>
+                <p>LONDON, MAYFAIR DISTRICT, ROYAL INSTITUTION</p>
+                <p>Join industry leaders, visionaries & creatives at this landmark summit for groundbreaking strategic insight, inspiration & innovation, connect with the community, find your competitive edge & frame the future of fashion.</p>
+            </div>
+            <div class="buttons">
+                <button class="register-btn">REGISTER NOW</button>
+                <button class="involved-btn">GET INVOLVED</button>
+            </div>
+        </section>
+    </main>
 
-    <footer>
-        <p>@ www.itmathvegetitor.ru</p>
-    </footer>
+    <script>
+        // JavaScript для мобильного меню
+        const mobileToggle = document.querySelector('.mobile-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+    </script>
 </body>
 </html>

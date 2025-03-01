@@ -1,0 +1,363 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    font-family: "Arial", sans-serif;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    background: linear-gradient(to bottom, #a1c4fd, #f8a6c8);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Header Styles */
+header {
+    width: 100%;
+    padding: 20px 0;
+    background: rgba(255, 255, 255, 0.9);
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-family: "Playfair Display", serif;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    position: absolute;
+    left: 50px;
+    top: 20px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    margin: 0 50px 0 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin-left: 30px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #007bff;
+}
+
+/* Main Hero Section */
+.hero {
+    margin-top: 100px; /* Отступ под фиксированным хедером */
+    text-align: center;
+    position: relative;
+    padding: 50px;
+}
+
+.hero h1 {
+    font-family: "Playfair Display", serif;
+    font-size: 48px;
+    color: #333;
+    margin-bottom: 20px;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    display: inline-block;
+}
+
+.image-placeholder {
+    margin: 20px auto;
+    max-width: 500px;
+}
+
+.holo-figure {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.event-details {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    margin: 20px auto;
+    max-width: 600px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.event-details p {
+    font-size: 16px;
+    color: #333;
+    line-height: 1.6;
+    margin: 10px 0;
+}
+
+.buttons {
+    margin-top: 30px;
+}
+
+.register-btn,
+.involved-btn {
+    padding: 15px 40px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 0 10px;
+    transition:
+        transform 0.3s ease,
+        background-color 0.3s ease;
+}
+
+.register-btn {
+    background-color: #000;
+    color: white;
+}
+
+.involved-btn {
+    background-color: white;
+    color: #000;
+    border: 2px solid #000;
+}
+
+.register-btn:hover,
+.involved-btn:hover {
+    transform: scale(1.05);
+}
+
+.register-btn:hover {
+    background-color: #333;
+}
+
+.involved-btn:hover {
+    background-color: #f0f0f0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header {
+        padding: 10px 0;
+    }
+
+    .logo {
+        left: 20px;
+        top: 10px;
+        font-size: 18px;
+    }
+
+    nav ul {
+        margin-right: 20px;
+    }
+
+    nav ul li {
+        margin-left: 15px;
+    }
+
+    .hero {
+        margin-top: 80px;
+        padding: 20px;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+        padding: 15px;
+    }
+
+    .event-details {
+        max-width: 90%;
+        padding: 15px;
+    }
+
+    .register-btn,
+    .involved-btn {
+        padding: 10px 30px;
+        font-size: 14px;
+    }
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+
+:root {
+    --header-bg: #121212;
+    --header-text: #ffffff;
+    --header-accent: #9747ff;
+    --header-hover: #b47dff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+    background-color: #f5f5f5;
+}
+
+header {
+    background-color: var(--header-bg);
+    border-radius: 0 0 20px 20px;
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.header-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--header-text);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(90deg, #9747ff, #4fa8ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.logo-dot {
+    color: var(--header-accent);
+    margin-left: 2px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+nav ul li a {
+    color: var(--header-text);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    position: relative;
+    padding: 0.5rem 0;
+    transition: all 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: var(--header-hover);
+}
+
+nav ul li a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--header-accent);
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+.active a {
+    color: var(--header-accent);
+}
+
+.mobile-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    color: var(--header-text);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.get-involved-btn {
+    background: linear-gradient(90deg, #9747ff, #4fa8ff);
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 30px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+    margin-left: 2rem;
+}
+
+.get-involved-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(151, 71, 255, 0.3);
+}
+
+/* Адаптивность */
+@media (max-width: 1100px) {
+    nav ul {
+        gap: 1.2rem;
+    }
+
+    nav ul li a {
+        font-size: 0.8rem;
+    }
+
+    .get-involved-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+        margin-left: 1rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .mobile-toggle {
+        display: block;
+    }
+
+    .nav-menu {
+        position: fixed;
+        right: -100%;
+        top: 4.5rem;
+        flex-direction: column;
+        background-color: var(--header-bg);
+        width: 80%;
+        max-width: 300px;
+        border-radius: 20px;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        padding: 2rem;
+        gap: 1.5rem;
+    }
+
+    .nav-menu.active {
+        right: 1rem;
+    }
+
+    .get-involved-btn {
+        margin: 1rem 0 0 0;
+    }
+}
