@@ -101,11 +101,8 @@ h2 {
     padding: 12px 30px;
     font-size: 14px;
     cursor: pointer;
-    transition: all 0.3s ease;
     overflow: hidden;
     z-index: 1;
-
-    transition: all 0.3s ease;
 }
 
 .book-call-btn::before {
@@ -131,49 +128,27 @@ h2 {
     background-color: rgba(255, 255, 255, 0.15);
     transform: translateY(-2px);
     box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.book-call-btn:hover::before {
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 1;
-}
-
-/* Медиа-запросы для адаптивности */
-@media (max-width: 768px) {
-    h1, h2 {
-        font-size: 2rem;
-    }
-    
-    .social-links {
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-    }
-    
-    .header-container {
-        flex-direction: column;
-    }
-}
-
-@media (max-width: 480px) {
-    h1, h2 {
-        font-size: 1.5rem;
-    }
-    
-    .subtitle {
-        font-size: 0.9rem;
-    }
-}
-/* Стили для футера */
 footer {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-    padding: 15px 30px;
+    padding: 20px 30px;
     display: flex;
-    justify-content: space-between;
     z-index: 10;
+}
+
+.footer-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+body, body.light-theme {
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .footer-btn {
@@ -187,11 +162,8 @@ footer {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: all 0.3s ease;
     font-size: 12px;
     padding: 0;
-
-    transition: all 0.3s ease;
 }
 
 .footer-btn:hover {
@@ -246,4 +218,31 @@ body.light-theme .subtitle {
                 border-color 0.35s ease,
                 color 0.10s ease,
                 box-shadow 0.25s ease;
+}
+
+/* Медиа-запросы для адаптивности */
+@media (max-width: 768px) {
+    h1, h2 {
+        font-size: 2rem;
+    }
+    
+    .social-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .header-container {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    h1, h2 {
+        font-size: 1.5rem;
+    }
+    
+    .subtitle {
+        font-size: 0.9rem;
+    }
 }
