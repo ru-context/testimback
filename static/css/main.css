@@ -68,7 +68,6 @@ main {
     flex-direction: column;
     align-items: center;
     gap: 5px;
-    transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
 h1, h2 {
@@ -255,28 +254,15 @@ body.light-theme .subtitle {
     gap: 20px;
     width: 100%;
     max-width: 600px;
-    opacity: 0;
     position: absolute;
-    transform: translateY(20px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.input-form-wrapper.visible {
-    opacity: 1;
-    transform: translateY(0);
 }
 
 .content-wrapper {
     transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-.content-wrapper.fade-out {
-    opacity: 0;
-    transform: translateY(-20px);
-}
-
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 .ml-input {

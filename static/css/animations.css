@@ -10,12 +10,59 @@
     }
 }
 
+@keyframes fadeOutUp {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInForm {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* Анимации для основного контента */
 .content-wrapper {
     opacity: 0;
     animation: fadeInUp 0.8s ease forwards;
 }
 
+.content-wrapper.fade-out {
+    animation: fadeOutUp 0.8s ease forwards !important;
+}
+
+.input-form-wrapper {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.input-form-wrapper.visible {
+    animation: fadeInForm 0.8s ease forwards;
+}
+
+/* Анимации для элементов контента */
 h1 {
     opacity: 0;
     animation: fadeInUp 0.8s ease forwards;
