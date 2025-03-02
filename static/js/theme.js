@@ -19,14 +19,9 @@ function setTheme(isDark) {
     }
 }
 
-// Устанавливаем начальную тему согласно системным настройкам
+// Устанавливаем начальную тему - светлую
 document.addEventListener('DOMContentLoaded', function() {
-    setTheme(prefersDarkScheme.matches);
-    
-    // Слушаем изменения системной темы
-    prefersDarkScheme.addEventListener('change', (e) => {
-        setTheme(e.matches);
-    });
+    setTheme(false);
     
     // Обработчик клика по кнопке
     const themeToggle = document.querySelector('.theme-toggle');
