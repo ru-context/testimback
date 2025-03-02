@@ -1,5 +1,5 @@
 // Проверяем системные настройки темы
-// const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
 
 // Функция для установки темы
 function setTheme(isDark) {
@@ -19,9 +19,15 @@ function setTheme(isDark) {
     }
 }
 
-// Устанавливаем начальную тему - светлую
+// Устанавливаем начальную тему на основе системных настроек
 document.addEventListener('DOMContentLoaded', function() {
-    setTheme(false);
+    // Используем системную тему по умолчанию
+    setTheme(prefersDarkScheme.matches);
+    
+    // Слушаем изменения системной темы
+    prefersDarkScheme.addEventListener('change', (e) => {
+        setTheme(e.matches);
+    });
     
     // Обработчик клика по кнопке
     const themeToggle = document.querySelector('.theme-toggle');
