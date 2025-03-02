@@ -68,6 +68,7 @@ main {
     flex-direction: column;
     align-items: center;
     gap: 5px;
+    transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
 h1, h2 {
@@ -245,4 +246,113 @@ body.light-theme .subtitle {
     .subtitle {
         font-size: 0.9rem;
     }
+}
+/* Стили для формы ввода */
+.input-form-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 600px;
+    opacity: 0;
+    position: absolute;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.input-form-wrapper.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.content-wrapper {
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.content-wrapper.fade-out {
+    opacity: 0;
+    transform: translateY(-20px);
+}
+
+.hidden {
+    display: none;
+}
+
+.ml-input {
+    width: 100%;
+    min-height: 150px;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    font-size: 16px;
+    resize: vertical;
+    transition: all 0.3s ease;
+}
+
+.ml-input:focus {
+    outline: none;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.form-hint {
+    font-size: 14px;
+    opacity: 0.7;
+    margin-top: -10px;
+}
+
+/* Стили для светлой темы */
+body.light-theme .ml-input {
+    background-color: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: #333;
+}
+
+body.light-theme .ml-input:focus {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 0, 0, 0.3);
+}
+
+.form-buttons {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+    justify-content: center;
+}
+
+.submit-btn, .cancel-btn {
+    padding: 10px 25px;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.submit-btn:hover, .cancel-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Стили для светлой темы */
+body.light-theme .ml-input {
+    background-color: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: #333;
+}
+
+body.light-theme .submit-btn, 
+body.light-theme .cancel-btn {
+    background-color: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: #333;
+}
+
+body.light-theme .submit-btn:hover, 
+body.light-theme .cancel-btn:hover {
+    background-color: rgba(0, 0, 0, 0.1);
 }
